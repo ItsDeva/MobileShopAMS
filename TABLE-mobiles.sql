@@ -19,3 +19,4 @@ CREATE TABLE IF NOT EXISTS `mobiles` (
 INSERT INTO `mobiles` (`mobileid`, `brand`, `model`, `imei1`, `imei2`, `indate`, `dprate`) VALUES
 ('LNK6_1', 'LENOVO', 'K6POWER', 2147483647, 2147483647, '2017-10-11', 9400),
 ('LNK6_2', 'LENOVO', 'K6POWER', 123456780009876, 99099888873456, '2017-10-11', 9400);
+  C:\Users\Sign Fab\AppData\Local\atom
