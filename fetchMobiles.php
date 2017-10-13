@@ -21,24 +21,24 @@ $output = '';
 if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
- echo $search;
- echo "<br/>";
-  echo "Now at IIIIIFFFF Part";
- $query = "
-  SELECT * FROM mobiles
-  WHERE brand LIKE '%".$search."%'";
 
+  $query = "
+   SELECT * FROM mobiles
+   WHERE mobileid LIKE '%".$search."%'
+   OR brand LIKE '%".$search."%'
+   OR model LIKE '%".$search."%'
+   OR imei1 LIKE '%".$search."%'
+   OR imei2 LIKE '%".$search."%'
+   OR dprate LIKE '%".$search."%'
+  ";
+  $result = mysqli_query($conn, $query);
 }
 else
 {
   $query = "
-   SELECT * FROM mobiles
-   WHERE brand LIKE '%".$search."%'";
-   echo "Now at Else Part";
+   SELECT * FROM mobiles";
   $result = mysqli_query($conn, $query);
-  ?>
-
-<?php
+}
 //  if (mysqli_num_rows($result) > 0) {
      while($data = mysqli_fetch_array($result)) {
   ?>
@@ -51,9 +51,9 @@ else
   <td class='text-left'><?php echo $data['indate'];?></td>
   <td class='text-left'><?php echo $data['dprate'];?></td>
   </tr>
-  <?php }
+  <?php
 } //else {
-  echo " results";
+
 //}}
   mysqli_close($conn);
   ?>
