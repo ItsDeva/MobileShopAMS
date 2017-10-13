@@ -35,8 +35,12 @@ if(isset($_POST["query"]))
 }
 else
 {
+<<<<<<< HEAD
   $query = "
    SELECT * FROM mobiles";
+=======
+  $query = 'SELECT * FROM mobiles WHERE brand="Nokia"';
+>>>>>>> 9d3f8d8cc09c83e0a604fd40d6cdba3eaa228ea9
   $result = mysqli_query($conn, $query);
 }
 //  if (mysqli_num_rows($result) > 0) {
