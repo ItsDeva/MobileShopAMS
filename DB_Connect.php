@@ -1,3 +1,4 @@
+
 <?php
 
   $host="localhost";
@@ -8,7 +9,9 @@
 
   $database="mobilestore";
 
-  $con=mysql_connect($host,$user,$pwd,$database) or die("Cannot Connect to Database");
+  $con=($GLOBALS["___mysqli_ston"] = mysqli_connect($host, $user, $pwd)) or die("Cannot Connect to Database");
 
-  mysql_select_db($database,$con) or die ("Error Occured");
+  ((bool)mysqli_query($con, "USE " . $database)) or die ("Error Occured");
 ?>
+
+//Old One
