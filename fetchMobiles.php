@@ -23,6 +23,7 @@ if(isset($_POST["query"]))
  $search = mysqli_real_escape_string($conn, $_POST["query"]);
  echo $search;
  echo "<br/>";
+  echo "Now at IIIIIFFFF Part";
  $query = "
   SELECT * FROM mobiles
   WHERE brand LIKE '%".$search."%'";
@@ -30,7 +31,10 @@ if(isset($_POST["query"]))
 }
 else
 {
-  $query = 'SELECT * FROM mobiles';
+  $query = "
+   SELECT * FROM mobiles
+   WHERE brand LIKE '%".$search."%'";
+   echo "Now at Else Part";
   $result = mysqli_query($conn, $query);
   ?>
 
