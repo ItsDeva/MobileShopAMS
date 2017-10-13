@@ -30,7 +30,7 @@ if(isset($_POST["query"]))
 }
 else
 {
-  $query = 'SELECT * FROM mobiles';
+  $query = 'SELECT * FROM mobiles WHERE brand="Nokia"';
   $result = mysqli_query($conn, $query);
   ?>
 
