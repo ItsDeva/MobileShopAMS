@@ -1,26 +1,4 @@
-<?php
-//fetch.php
-include("DB_Connect.php");
-$output = '';
-if(isset($_POST["query"]))
-{
- $search = mysqli_real_escape_string($connect, $_POST["query"]);
- $query = "
-  SELECT * FROM mobiles
-  WHERE mobileid LIKE '%".$search."%'
-  OR brand LIKE '%".$search."%'
-  OR model LIKE '%".$search."%'
-  OR imei1 LIKE '%".$search."%'
-  OR imei2 LIKE '%".$search."%'
-  OR dprate LIKE '%".$search."%'
- ";
-}
-else
-{
-  $query = 'SELECT * FROM mobiles';
-  $result = mysqli_query($conn, $query);
-  ?>
-  <div class="table-title">
+<div class="table-title">
 </div>
 <table>
 <thead>
@@ -33,16 +11,33 @@ else
 <th class="text-left">IN Date</th>
 <th class="text-left">Amount</th>
 </tr>
-<?php
-  if (mysqli_num_rows($result) > 0) {
-     while($data = mysqli_fetch_assoc($result)) {
-  ?>
-
-
-
 </thead>
 <tbody class="table-hover">
 
+<?php
+//fetch.php
+include("DB_Connect.php");
+$output = '';
+if(isset($_POST["query"]))
+{
+ $search = mysqli_real_escape_string($conn, $_POST["query"]);
+ echo $search;
+ echo "<br/>";
+ $query = "
+  SELECT * FROM mobiles
+  WHERE brand LIKE '%".$search."%'";
+
+}
+else
+{
+  $query = 'SELECT * FROM mobiles';
+  $result = mysqli_query($conn, $query);
+  ?>
+
+<?php
+//  if (mysqli_num_rows($result) > 0) {
+     while($data = mysqli_fetch_array($result)) {
+  ?>
   <tr>
   <td class='text-left'><?php echo $data['mobileid'];?></td>
   <td class='text-left'><?php echo$data['brand'];?></td>
@@ -52,13 +47,12 @@ else
   <td class='text-left'><?php echo $data['indate'];?></td>
   <td class='text-left'><?php echo $data['dprate'];?></td>
   </tr>
+  <?php }
+} //else {
+  echo " results";
+//}}
+  mysqli_close($conn);
+  ?>
 </tbody>
 </table>
 </div>
-
-  <?php }
-  } else {
-  echo "0 results";
-}}
-  mysqli_close($conn);
-  ?>
