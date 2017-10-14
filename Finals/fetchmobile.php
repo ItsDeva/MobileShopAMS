@@ -6,12 +6,11 @@ if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($connect, $_POST["query"]);
 
-$sql = "SELECT brand,model,count(brand) as stocks FROM `mobiles` group by model having brand like '%".$search."%'";
+$sql = "SELECT  * FROM `mobiles` ";
 }
 else
 {
- $sql = "SELECT brand,model,count(brand) as stocks FROM `mobiles` group by model";
-}
+ $sql = "SELECT  * FROM `mobiles` ";
 $result = mysqli_query($connect, $sql);
 if(mysqli_num_rows($result) > 0)
 {
@@ -21,7 +20,10 @@ if(mysqli_num_rows($result) > 0)
     <tr>
     <th>Brand</th>
     <th>Model</th>
-    <th>stocks</th>
+    <th>IMEI1</th>
+     <th>IMEI2</th>
+      <th>INDATE</th>
+      <th>DPRATE</th>
 
     </tr>
  ';
@@ -31,6 +33,10 @@ if(mysqli_num_rows($result) > 0)
    <tr>
     <td><a href="viewmobile.php?id='.$row["brand"].'">'.$row["brand"].'</a></td>
     <td>'.$row["model"].'</td>
+    <td>'.$row["imei1"].'</td>
+    <td>'.$row["IMEI2"].'</td>
+    <td>'.$row["indate"].'</td>
+    <td>'.$row["dprate"].'</td>
     <td>'.$row["stocks"].'</td>
 
    </tr>
