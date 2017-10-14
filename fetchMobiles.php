@@ -1,6 +1,6 @@
-<div class="table-title">
+<div class="table-title"><h3>Arthanareeswarar Mobile Shop</h3>
 </div>
-<table>
+<table class="table-fill">
 <thead>
 <tr>
 <th class="text-left">Mobile ID</th>
