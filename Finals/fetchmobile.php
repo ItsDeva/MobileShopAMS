@@ -6,11 +6,11 @@ if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($connect, $_POST["query"]);
 
-$sql = "SELECT  * FROM `mobiles` ";
+$sql = "SELECT  * FROM `mobiles`where mobileid like '' ";
 }
 else
 {
- $sql = "SELECT  * FROM `mobiles` ";
+ $sql = "SELECT  * FROM `mobiles` where mobileid like ''";
 $result = mysqli_query($connect, $sql);
 if(mysqli_num_rows($result) > 0)
 {
@@ -37,7 +37,6 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["IMEI2"].'</td>
     <td>'.$row["indate"].'</td>
     <td>'.$row["dprate"].'</td>
-    <td>'.$row["stocks"].'</td>
 
    </tr>
   ';

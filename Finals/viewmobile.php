@@ -1,46 +1,37 @@
 <?php
+
+session_start();
 require 'styles/allStyles.html';
 //fetch.php
 require 'Util/DB_Connect.php';
 $output = '';
-if(isset($_GET["id"]))
+if(isset($_GET["mobileid"]))
 {
- $search = mysqli_real_escape_string($connect, $_GET["id"]);
+ $search = mysqli_real_escape_string($connect, $_GET["mobileid"]);
  $query = "
   SELECT * FROM mobiles
-  WHERE mobileid LIKE '%".$search."%'
+  WHERE mobileid = '".$search."'
  ";
 }
 $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)
 {
-  $output .= '
-   <div class="table-responsive">
-    <table class="table table bordered" id="example">
-     <tr>
-     <th>Mobile ID</th>
-     <th>Brand</th>
-     <th>Model</th>
-     <th>IMEI 1</th>
-     <th>IMEI 2</th>
-     <th>IN Date</th>
-     <th>Amount</th>
-     </tr>
-  ';
   while($row = mysqli_fetch_array($result))
   {
    $output .= '
-    <tr>
-     <td>'.$row["mobileid"].'</td>
-     <td>'.$row["brand"].'</td>
-     <td>'.$row["model"].'</td>
-     <td>'.$row["imei1"].'</td>
-     <td>'.$row["imei2"].'</td>
-     <td>'.$row["indate"].'</td>
-     <td>'.$row["dprate"].'</td>
-    </tr>
+<div style="width:800px; margin:0 auto;">
+    <table class="table" id="example">
+    <th>Mobile ID</th><td>'.$row["mobileid"].'</td></tr>
+     <th>Brand</th><td>'.$row["brand"].'</td></tr>
+     <tr> <th>Model</th><td>'.$row["model"].'</td></tr>
+     <tr> <th>IMEI1</th><td>'.$row["imei1"].'</td></tr>
+     <tr>  <th>IMEI2</th> <td>'.$row["imei2"].'</td></tr>
+     <tr>   <th>INDATE</th>   <td>'.$row["indate"].'</td></tr>
+       <tr> <th>DPRATE</th> <td>'.$row["dprate"].'</td></tr>
+
    ';
   }
+  $_SESSION["mobile"] = $row["mobileid"];
   echo $output;
 }
 else
@@ -48,10 +39,9 @@ else
  echo 'Data Not Found';
 }
 
-
-
 ?>
 </div>
 </table>
+<h4 class="center1"><a href="purchase.php">BUY</a></h4>
 </body>
 </html>

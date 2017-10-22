@@ -5,7 +5,7 @@ $(document).ready(function(){
  function load_data(query)
  {
   $.ajax({
-   url:"fetch.php",
+   url:"fetchmobiles.php",
    method:"POST",
    data:{query:query},
    success:function(data)

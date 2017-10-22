@@ -16,7 +16,7 @@ $result = mysqli_query($connect, $sql);
 if(mysqli_num_rows($result) > 0)
 {
  $output .= '
-  <div class="table-responsive">
+  <div class="table-responsive" id="result">
    <table class="table table bordered" id="example">
     <tr>
     <th>Brand</th>
@@ -29,8 +29,8 @@ if(mysqli_num_rows($result) > 0)
  {
   $output .= '
    <tr>
-    <td><a href="viewmobile.php?id='.$row["brand"].'">'.$row["brand"].'</a></td>
-    <td>'.$row["model"].'</td>
+    <td>'.$row["brand"].'</td>
+    <td><a href="fetchmobiles.php?model='.$row["model"].'">'.$row["model"].'</a></td>
     <td>'.$row["stocks"].'</td>
 
    </tr>

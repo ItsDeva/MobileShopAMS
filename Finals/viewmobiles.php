@@ -1,14 +1,17 @@
 <!DOCTYPE html>
+<?php
+$model = $_GET['model'];
+?>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Select Mobile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="styles/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
   <script src="styles/jquery.min.js"></script>
   <script src="styles/style.css"></script>
-  <script src="livesearch.js"></script>
+  <script src="styles/livesearchmobiles.js"></script>
 
 </head>
 <body>
