@@ -1,14 +1,18 @@
 <?php
+$host="localhost";
 
-  $host="localhost";
+$user="root";
 
-  $user="root";
+$pwd="root@123";
 
-  $pwd="root@123";
-
-  $database="mobilestore";
-
-  $con=mysql_connect($host,$user,$pwd,$database) or die("Cannot Connect to Database");
-
-  mysql_select_db($database,$con) or die ("Error Occured");
+$database="mobilestore";
+$conn = mysqli_connect($host,$user,$pwd,$database);
+ //$con = mysqli_connect("localhost", "root", "", "demo");
+ // Check connection
+if($conn === false){
+ die("ERROR: Could not connect. " . mysqli_connect_error());
+ }
+ //
+ // Close connection
+// mysqli_close($con);
 ?>
